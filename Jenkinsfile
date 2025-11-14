@@ -17,6 +17,13 @@ pipeline {
             }
         }
 
+        stage('Archive Artifact') {
+            steps {
+                echo '📦 Archiving compiled output...'
+                archiveArtifacts artifacts: '*.class', fingerprint: true
+            }
+        }
+
         stage('Test') {
             steps {
                 echo '🧪 Checking Java environment...'
